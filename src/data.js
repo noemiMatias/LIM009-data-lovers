@@ -1,4 +1,4 @@
-console.log(WORLDBANK.PER);
+console.log(WORLDBANK.PER.indicators[12].data.2002);
 
 
 
