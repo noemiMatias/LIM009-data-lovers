@@ -1,16 +1,16 @@
 body{
-    background: #3412f1;
     padding-top: 80px;
 }
 /*nav  es general*/
 nav{
     background: black;
 }
-   nav ul{
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        position: relative;
+
+nav ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
 }
 /*segundo nivel*/
 nav li{
@@ -19,9 +19,7 @@ nav li{
 nav li ul{
    /* position: absolute;*/
 }
-nav ul ul{
-    position: absolute;
-}
+
 nav ul li{
     display: inline-block;
 }
