@@ -4,12 +4,12 @@
 const elementoResultadoPorAño = document.getElementById('resultado-por-año');
 
 
-console.log(window.example());
+//console.log(window.example());
 
 
 const obtenerValorPorAño = (año, arr) => {
 
-//console.log(año)
+console.log(año);
 const arrNuevo = [];
 
 //console.log(año === "2003")
