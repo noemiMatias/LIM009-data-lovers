@@ -1,4 +1,5 @@
 /* Manejo del DOM */
+/* Manejo del DOM */
 /* Seleccionando los elementos del DOM */
 
 const elementoResultadoPorAño = document.getElementById('resultado-por-año');
@@ -50,3 +51,7 @@ selectYears.addEventListener('change',(e)=>{
    pintarDataPorAñoSeleccionado(dataPorAñoSeleccionado,elementoResultadoPorAño);
 
 });
+
+
+
+
