@@ -14,16 +14,17 @@
       <article>
         <div id="contenedor">
           <form action=" ">
-              <select name="dias" >
-                  <option value="value 1">Fuerza laboral con educacion básica total</option>
-                   <option value="value 2">Fuerza laboral varones con educacion básica</option>
-                <option value=" value 3 "> Fuerza laboral  mujeres con educación básica </option>
+              <select name="Indicadores" id="indicadores">
+                 <!-- option value="value 0" selected disabled>Indicadores</option>
+                 <option value="value 1">Fuerza laboral con educacion básica total</option>
+                 <option value="value 2">Fuerza laboral varones con educacion básica</option>
+                <option value=" value 3"> Fuerza laboral  mujeres con educación básica </option>
                 <option value="value 4">Fuerza laboral con educación avanzada total</option>
                 <option value="value 5">Fuerza laboral varones con educación avanzada</option>
-                </option value="value 6">Fuerza laboral mujeres con educación avanzada</option>
+                </option value="value 6">Fuerza laboral mujeres con educación avanzada</option -->
               </select>
-              <select name="fechas" id="items">
-                  <option value="00">00</option>
+              <select name="fechas" id="anios">
+                  <option value="--" selected disabled>Año</option>
                 <option value="2002">2002</option>
                <option value="2003">2003 </option>
                <option value="2004">2004</option>
@@ -41,8 +42,8 @@
                <option value="2016">2016</option>
                <option value="2017">2017</option>
              </select>
-             <div id="resultado-por-año"></div>
-              <button type="button">ir</button>
+              <button type="button" id="boton">resultado</button>
+              <div id="resultado-por-año"></div>
               </form>
             </div>
       </article>
