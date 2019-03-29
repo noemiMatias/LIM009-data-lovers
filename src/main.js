@@ -61,6 +61,7 @@ selectYears.addEventListener('change',(e)=>{
 
 
 
+
 //window.example(); 
 //window.example();
 /*const imprimir=document.getElementById("contenedor");
@@ -80,3 +81,6 @@ selectYears.addEventListener('change',()=>{
     //console.log(window.example()*/
 
 //window.exam(); 
+
+
+
