@@ -16,7 +16,7 @@ const valorSelect = (indicador,elementoIdDom)=>{
     for(let i=0; i<indicador.length; i++){
         /*let indicadorId=indicador[i].id);
         let indicadorName=indicador[i].name);*/
-        string += <option value=${indicador[i].id}>${indicador[i].name}</option>
+        string += `<option value=${indicador[i].id}>${indicador[i].name}</option>`
     }
     elementoIdDom.innerHTML = string;
 };
@@ -33,8 +33,8 @@ seleccionDeIndicadores.addEventListener( "change" ,(e)=>{
     for(let i=0; i < arrAnio.length; i++){
         /*let indicadorId=indicador[i].id);
         let indicadorName=indicador[i].name);*/
-        string += <option value=${arrAnio[i]}>${arrAnio[i]}</option>;
+        string += `<option value=${arrAnio[i]}>${arrAnio[i]}</option>`;
     }
 
     seleccionPorAnio.innerHTML = string;
-})
+}) 
