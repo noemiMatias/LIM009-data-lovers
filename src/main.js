@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> df2958c7b308a61cbc6b77988c072f9a2a24acc2
 /* Manejo del DOM */
 /* Seleccionando los elementos del DOM */
 const seleccionDeIndicadores = document.getElementById("selectores");
@@ -37,4 +41,5 @@ seleccionDeIndicadores.addEventListener( "change" ,(e)=>{
     }
 
     seleccionPorAnio.innerHTML = string;
+
 }) 
