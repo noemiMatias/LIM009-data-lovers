@@ -1,94 +1,40 @@
 /* Manejo del DOM */
-/* Manejo del DOM */
 /* Seleccionando los elementos del DOM */
-const data = WORLDBANK.PER.indicators;
-//console.log(data);
-const elementoResultadoPorAño = document.getElementById('resultado-por-año');
-const indicadores = document.getElementById("indicadores");
-const fechas = document.getElementById("anios");
-const botonResultado = document.getElementById("boton");
+const seleccionDeIndicadores = document.getElementById("selectores");
+const seleccionPorAnio = document.getElementById("anios");
+const resultado=document.getElementById("resultado-por-año");
+//LLAMANDO A LA FUNCION QUE NOS DA LOS INDICADORCODE - INDICADORNAME
+const indicadores=capturarIndicadores(todoPeruIndicadores);
+// console.log(data2)
+// console.log(indicadores);
+// const aniosSeleccionados=capturarAnios(todoPeruIndicadores);
+// console.log(aniosSeleccionados);
 
-botonResultado.addEventListener("click",()=>{
-    
-    //console.log(indicadores.value);
-    //console.log(fechas.value);
-
-    let resultado = retornaValor(data, 'SL.TLF.INTM.ZS', 2010);
-
-    //console.log(resultado);
-    elementoResultadoPorAño.innerHTML=resultado;
-
-    
-      //console.log(todaLaData);
-      
-      
-      
-      
-
-});
-indicadores.addEventListener("clik",()=>{
-    let indicadores = obtenerIndicadores(data);
-elementoPorAño.innerHTML=indicadores;
-
-})
-
-
-/*const obtenerValorPorAño = (año, arr) => {
-
-//console.log(año);
-const arrNuevo = [];
-
-//console.log(año === "2003")
-
-for(let i = 0; i < arr.length; i++){
-    //console.log(arr[i].year === '2003')
-    if(arr[i].year === año){
-      arrNuevo.push(arr[i])  
-    }   
-}
-
- return arrNuevo;
-
+// CREAMOS UNA FUNCION PARA IMPRIMIR EN EL  SELECT LOS INDICATORCODE (VALOR) Y EL INDICATORNAME(NOMBRES DE LOS TEMAS ) 
+const valorSelect = (indicador,elementoIdDom)=>{
+    let string = '<option value="Todos" selected>Indicadores</option>';
+    for(let i=0; i<indicador.length; i++){
+        /*let indicadorId=indicador[i].id);
+        let indicadorName=indicador[i].name);*/
+        string += <option value=${indicador[i].id}>${indicador[i].name}</option>
+    }
+    elementoIdDom.innerHTML = string;
 };
+// LLAMANDO LA FUNCION
+valorSelect(indicadores,seleccionDeIndicadores);
 
 
-const pintarDataPorAñoSeleccionado = (arr, elemento) => {
-  let string = '';
- for(let i = 0; i < arr.length; i++){
-     string += `<div>
-      <p> Año : ${arr[i].year} </p> 
-      <p> Valor : ${arr[i].value} </p>
-     </div>`
- }
- elemento.innerHTML = string;
-}
+// CREAMOS UNA FUNCION PARA IMPRIMIR EN EL  SELECT LOS AÑOS DE CADA INDICE 
+seleccionDeIndicadores.addEventListener( "change" ,(e)=>{
+    const valorSelect= seleccionDeIndicadores.value;
+    const arrAnio = listaAnio(data2,valorSelect);
 
+    let string = '<option value="Todos" selected>Años</option>';
+    for(let i=0; i < arrAnio.length; i++){
+        /*let indicadorId=indicador[i].id);
+        let indicadorName=indicador[i].name);*/
+        string += <option value=${arrAnio[i]}>${arrAnio[i]}</option>;
+    }
 
-const container=document.getElementById("contenedor");
-const selectYears=document.getElementById("items");
-//console.log(selectYears.value);
-selectYears.addEventListener('change',(e)=>{
-    //console.log(e.target.value);
-    //console.log(window.example())
-   const añoSeleccionado =  e.target.value;
-   const dataPorAños = window.example();
-   const dataPorAñoSeleccionado =  obtenerValorPorAño(añoSeleccionado, dataPorAños);
-   pintarDataPorAñoSeleccionado(dataPorAñoSeleccionado,elementoResultadoPorAño);
-
-});
-<<<<<<< HEAD
-
-
-
-
-=======
-/*const selectIndices=document.getElementById("indicadores");
-
-//console.log(selectIndices.value);
- selectIndices.addEventListener('change',(e)=>{
-     console.log(e.target.value);
-     const indicadorSeleccionado=e.target.value;
-     const funcionAsignada= ;
-
- });*/
->>>>>>> bd04a52b4c6f0c6d70ef78ae3a45d23523dcd07a
+    seleccionPorAnio.innerHTML = string;
+})
