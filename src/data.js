@@ -1,46 +1,78 @@
-/*console.log(WORLDBANK.PER.indicators[12].data);*/
+const todoPeruIndicadores = WORLDBANK['PER']['indicators'];
 
-const example = () => {
-  const arr = [];
-  const todaLaData = WORLDBANK.PER.indicators[12].data;
-  
-  
-  const anios = Object.keys(todaLaData)
-  for (let i = 0; i <= anios.length - 1; i++) {
-    if (anios[i] >= 2002) {
-      const obj = {};
-      obj.year = anios[i];
-      obj.value = todaLaData[anios[i]];
-      arr.push(obj)
-    }
-    console.log(todaLaData);
-  };
+// ARRAY QUE CONTIENE ID Y NAME DE LOS INDICADORES QUE TENEMOS PUSHEADOS DE LA FUNCION DE CAPTURAR INDICE 
 
-  return arr;
-}
-//nuevas funciones
-
-const retornaValor = (data, indicatorCode, anio) => {
-  for(let i=0;i<data.length;i++){
-    
-    if(data[i].indicatorCode===indicatorCode){
-      return data[i].data[anio];
+// 1RA FUNCION QUE CAPTURA LOS INDICADORES POR CODIGO Y NAME QUE QUIERO (FUERZA LABORAL 6 INDICADORES)
+const capturarIndicadores = (data) => {
+  // ARRAY DE INDICADORES
+  let arr = [""];
+  //  console.log(arr);
+  for (let i = 0; i < data.length; i++) {
+    if (i > 9 && i < 16) {
+      let obj = {
+        id: data[i].indicatorCode,
+        name: data[i].indicatorName
+        // console.log(valorIndicadores[i].id);
+        // console.log(valorIndicadores[i].name);
+      }
+      arr.push(obj);
     }
   }
-  
+  return arr;
 };
 
-const obtenerIndicadores=(data)=>{
-  for(let i=0;i<data.length;i++){
-  (data[i].indicatorCode)
+// EXPORTANDO FUNCION QUE NOS IMPRIME
+window.capturarIndicadores = capturarIndicadores;
 
-    
-    //cajaDeIndicadores.push(listaDeIndicadores)
-    
-    };
-  return ;
+// 2DA FUNCION QUE CAPTURA  LOS AÑOS Y SUS VALORES
+// ARRAY CON INDICATORCODE Y TODOS LOS AÑOS
+var data2 = [];
+// console.log(data2);
+const capturarAnios = (dataValoresAnios) => {
+  // console.log(dataValoresAnios);
+  const arrayAnios = [];
+  // console.log(arrayAnios);
+  console.log(dataValoresAnios)
+  for (let i = 0; i < dataValoresAnios.length; i++) {
+
+    if (i > 9 && i < 16) {
+      const aniosTotal = dataValoresAnios[i].data;
+
+      const objAnios = {
+        data: dataValoresAnios[i].data,
+        indicatorCode: dataValoresAnios[i].indicatorCode
+      }
+      arrayAnios.push(objAnios);
+    }
+  }
+  // ESTAMOS SACANDO EL ARRAY DE LA FUNCION PARA PODER UTILIZARLO COMO ARGUMENTO 
+  data2 = arrayAnios;
 };
 
-window.example = example;
-window.retornaValor = retornaValor;
-window.obtenerIndicadores=obtenerIndicadores;
+// ESTO SE EJECUTA SOLO UNA VEZ PARA LLENAR EL NUEVO ARREGLO DATA2
+capturarAnios(todoPeruIndicadores);
+
+//LISTA DE AÑOS POR INDICADOR
+const listaAnio = (data,indicatorCode) => {
+  const arrAnio =[];
+  // console.log(arrAnio);
+  for (let i = 0; i < data.length; i++) {
+    if(data[i].indicatorCode === indicatorCode){
+      const keyArr = Object.keys(data[i].data);
+      const valueArr = Object.values(data[i].data);
+      for (let o = 0; o < keyArr.length; o++) {
+        if(valueArr[o] != ""){
+          arrAnio.push(keyArr[o]);
+        }
+      }
+    }
+  }
+
+  return arrAnio;
+}
+
+//listaAnio(data2,"SL.TLF.ADVN.ZS");
+
+// console.log(capturarAnios);
+window.data2 = data2;
+window.listaAnio=listaAnio;
