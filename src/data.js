@@ -1,4 +1,13 @@
 const todoPeruIndicadores = WORLDBANK['PER']['indicators'];
+ for (let i=0;i<todoPeruIndicadores.length;i++)
+ if (i > 9 && i < 16){
+  
+  const anios= todoPeruIndicadores[i].data
+  //console.log(anios);
+
+ }
+ 
+ 
 
 // ARRAY QUE CONTIENE ID Y NAME DE LOS INDICADORES QUE TENEMOS PUSHEADOS DE LA FUNCION DE CAPTURAR INDICE 
 
@@ -24,15 +33,15 @@ const capturarIndicadores = (data) => {
 // EXPORTANDO FUNCION QUE NOS IMPRIME
 window.capturarIndicadores = capturarIndicadores;
 
-// 2DA FUNCION QUE CAPTURA  LOS AÑOS Y SUS VALORES
+// 2DA FUNCION QUE CAPTURA  LOS AÑOS Y SUS VALOR INDICATORCODE
 // ARRAY CON INDICATORCODE Y TODOS LOS AÑOS
 var data2 = [];
 // console.log(data2);
 const capturarAnios = (dataValoresAnios) => {
   // console.log(dataValoresAnios);
   const arrayAnios = [];
-  // console.log(arrayAnios);
-  console.log(dataValoresAnios)
+   //console.log(arrayAnios);
+  //console.log(dataValoresAnios)
   for (let i = 0; i < dataValoresAnios.length; i++) {
 
     if (i > 9 && i < 16) {
@@ -41,6 +50,7 @@ const capturarAnios = (dataValoresAnios) => {
       const objAnios = {
         data: dataValoresAnios[i].data,
         indicatorCode: dataValoresAnios[i].indicatorCode
+      
       }
       arrayAnios.push(objAnios);
     }
@@ -69,10 +79,28 @@ const listaAnio = (data,indicatorCode) => {
   }
 
   return arrAnio;
+};
+
+
+//CREAR FUNCION PARA PINTAR EN PANTALLA LOS RESULTADOS DE CADA capturarIndicadores
+
+
+const mostrarResutado=(datados)=>{
+  for(let i=0;i <=datados.length-1;i++){
+     if(datados[i] != datados[i].indicatorCode){
+       return datados[i]
+     }
+  }
+ 
 }
+
+//console.log(mostrarResutado(data2));
+
+
 
 //listaAnio(data2,"SL.TLF.ADVN.ZS");
 
 // console.log(capturarAnios);
+window.mostrarResultado;
 window.data2 = data2;
 window.listaAnio=listaAnio;
