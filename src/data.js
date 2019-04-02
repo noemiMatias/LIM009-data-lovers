@@ -6,7 +6,7 @@ const todoPeruIndicadores = WORLDBANK['PER']['indicators'];
 const capturarIndicadores = (data) => {
   // ARRAY DE INDICADORES
   let arr = [""];
-  //  console.log(arr);
+  // console.log(arr);
   for (let i = 0; i < data.length; i++) {
     if (i > 9 && i < 16) {
       let obj = {
@@ -26,13 +26,13 @@ window.capturarIndicadores = capturarIndicadores;
 
 // 2DA FUNCION QUE CAPTURA  LOS AÑOS Y SUS VALORES
 // ARRAY CON INDICATORCODE Y TODOS LOS AÑOS
-var data2 = [];
-// console.log(data2);
+
+//console.log(data2);
 const capturarAnios = (dataValoresAnios) => {
   // console.log(dataValoresAnios);
   const arrayAnios = [];
   // console.log(arrayAnios);
-  console.log(dataValoresAnios)
+  // console.log(dataValoresAnios)
   for (let i = 0; i < dataValoresAnios.length; i++) {
 
     if (i > 9 && i < 16) {
@@ -46,11 +46,12 @@ const capturarAnios = (dataValoresAnios) => {
     }
   }
   // ESTAMOS SACANDO EL ARRAY DE LA FUNCION PARA PODER UTILIZARLO COMO ARGUMENTO 
-  data2 = arrayAnios;
+   return arrayAnios
+  
+   
 };
 
-// ESTO SE EJECUTA SOLO UNA VEZ PARA LLENAR EL NUEVO ARREGLO DATA2
-capturarAnios(todoPeruIndicadores);
+
 
 //LISTA DE AÑOS POR INDICADOR
 const listaAnio = (data,indicatorCode) => {
@@ -69,10 +70,38 @@ const listaAnio = (data,indicatorCode) => {
   }
 
   return arrAnio;
+};
+
+// UNA FUNCION PARA OBTENER UN ARRAY QUE CONTIENE  6 OBJETOS CADA UNO CON TODOS LOS AÑOS Y RESPECTIVOS VALORES PORCENTUALES
+const listaAnioValores=(data)=>{
+  const arrAniosValues=[]; 
+  // console.log(arrAniosValues);es una array con 6 objetos que contiene todos los años con y sin valores
+for(let x = 0; x < data.length; x++){
+// console.log(data[x]);
+if(x > 9 && x < 16){
+  const objAniosValores=data[x].data;
+  // console.log(objAniosValores);
+  arrAniosValues.push(objAniosValores);
 }
 
-//listaAnio(data2,"SL.TLF.ADVN.ZS");
+}
+return arrAniosValues
+}
 
-// console.log(capturarAnios);
-window.data2 = data2;
+// FUNCION PARA OBTENER EL ARRAY QUE VAMOS A IMPRIMIR EN PANTALLA
+/*const valorDeAnioSelect =(listaAniosValores,)=>{
+
+}*/
+
+
+
+
+
+
+
+window.capturarAnios=capturarAnios;
 window.listaAnio=listaAnio;
+window.listaAnioValores=listaAnioValores;
+
+
+
