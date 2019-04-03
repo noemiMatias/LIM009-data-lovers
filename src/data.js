@@ -32,7 +32,7 @@ const capturarAnios = (dataValoresAnios) => {
   // console.log(dataValoresAnios);
   const arrayAnios = [];
   // console.log(arrayAnios);
-  console.log(dataValoresAnios)
+  // console.log(dataValoresAnios)
   for (let i = 0; i < dataValoresAnios.length; i++) {
 
     if (i > 9 && i < 16) {
@@ -52,6 +52,7 @@ const capturarAnios = (dataValoresAnios) => {
 // ESTO SE EJECUTA SOLO UNA VEZ PARA LLENAR EL NUEVO ARREGLO DATA2
 capturarAnios(todoPeruIndicadores);
 
+const arrValor= [];
 //LISTA DE AÑOS POR INDICADOR
 const listaAnio = (data,indicatorCode) => {
   const arrAnio =[];
@@ -60,11 +61,13 @@ const listaAnio = (data,indicatorCode) => {
     if(data[i].indicatorCode === indicatorCode){
       const keyArr = Object.keys(data[i].data);
       const valueArr = Object.values(data[i].data);
+     
       for (let o = 0; o < keyArr.length; o++) {
         if(valueArr[o] != ""){
           arrAnio.push(keyArr[o]);
         }
       }
+    
     }
   }
 

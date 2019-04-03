@@ -40,3 +40,18 @@ seleccionDeIndicadores.addEventListener( "change" ,(e)=>{
     seleccionPorAnio.innerHTML = string;
 }) 
 
+// BOTON DE AÑOS PARA IMRPMIR EN LA PANTALLA
+
+seleccionPorAnio.addEventListener( "change" ,(e)=>{
+    const valorSelectAnio=seleccionPorAnio.value;
+    console.log("holaaa");
+    
+    const prueba = listaAnio(data2,valorSelectAnio);
+    
+    console.log(prueba);
+
+
+
+
+    console.log("hoolaaa");
+})
