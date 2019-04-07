@@ -1,57 +1,55 @@
-
 /* Manejo del DOM */
-/* Seleccionando los elementos del DOM */
-const seleccionDeIndicadores = document.getElementById("selectores");
-const seleccionPorAnio = document.getElementById("anios");
-const resultado=document.getElementById("resultado-por-año");
-//LLAMANDO A LA FUNCION QUE NOS DA LOS INDICADORCODE - INDICADORNAME
-const indicadores=capturarIndicadores(todoPeruIndicadores);
-// console.log(data2)
-// console.log(indicadores);
-// const aniosSeleccionados=capturarAnios(todoPeruIndicadores);
-// console.log(aniosSeleccionados);
+const elementoSelectIndicador = document.getElementById("selectores");
+const resultado = document.getElementById("resultado-por-año");
+const selectOrden = document.getElementById("orden");
+const imprimirordenAsc = document.getElementById("resultado-orden-asc");
 
 // CREAMOS UNA FUNCION PARA IMPRIMIR EN EL  SELECT LOS INDICATORCODE (VALOR) Y EL INDICATORNAME(NOMBRES DE LOS TEMAS ) 
-const valorSelect = (indicador,elementoIdDom)=>{
+const imprimirOpcionesIndicador = (indicadores, elementoIdDom) => {
     let string = '<option value="Todos" selected>Indicadores</option>';
-    for(let i=0; i<indicador.length; i++){
-        /*let indicadorId=indicador[i].id);
-        let indicadorName=indicador[i].name);*/
-        string += `<option value=${indicador[i].id}>${indicador[i].name}</option>`
+    for (let i = 0; i < indicadores.length; i++) {
+        string += `<option value=${indicadores[i].id}>${indicadores[i].name}</option>`
     }
     elementoIdDom.innerHTML = string;
 };
-// LLAMANDO LA FUNCION
-valorSelect(indicadores,seleccionDeIndicadores);
+//funcion para imprimir selector
+imprimirOpcionesIndicador(capturarIndicadores(todoPeruIndicadores), elementoSelectIndicador);
+
+let data2=[]
+
+elementoSelectIndicador.addEventListener("change", (e) => {  
+    const valorSelect = e.target.value;
+    const resultadoAnios = capturarAnios(todoPeruIndicadores);
+    // console.log(resultadoAnios);
+    let string = '<p>Años</p>';
+    for (let i = 0; i < resultadoAnios.length; i++) {
+        if (resultadoAnios[i].indicatorCode === valorSelect) {
+            data2=resultadoAnios[i];
+            let llaves = Object.keys(resultadoAnios[i].data)
+            for (let j=0; j < llaves.length; j++) {
+                string += `<p>${llaves[j]}${resultadoAnios[i].data[llaves[j]]}</p>`;
+                //console.log(Object.entries(resultadoAnios[i].data))
+            }
+        
+            resultado.innerHTML = string;    
+        }  
+        }
+});
 
 
-// CREAMOS UNA FUNCION PARA IMPRIMIR EN EL  SELECT LOS AÑOS DE CADA INDICE 
-seleccionDeIndicadores.addEventListener( "change" ,(e)=>{
-    const valorSelect= seleccionDeIndicadores.value;
-    const arrAnio = listaAnio(data2,valorSelect);
-
-    let string = '<option value="Todos" selected>Años</option>';
-    for(let i=0; i < arrAnio.length; i++){
-        /*let indicadorId=indicador[i].id);
-        let indicadorName=indicador[i].name);*/
-        string += `<option value=${arrAnio[i]}>${arrAnio[i]}</option>`;
+selectOrden.addEventListener("change", (e) => {
+   
+    const valorSelect = e.target.value;
+    let string = '<p>Años</p>';
+    if(valorSelect == "asc"){
+        newData = listaAniosValores(capturarAnios(todoPeruIndicadores));
+        for(let i=0; i<newData.length; i++){
+           if(newData[i].indicatorCode === elementoSelectIndicador.value){
+            string +=`<p>${newData[i].anio}</p>`;
+           }
+           imprimirordenAsc.innerHTML =  string;
     }
-
-    seleccionPorAnio.innerHTML = string;
-}) 
-
-// BOTON DE AÑOS PARA IMRPMIR EN LA PANTALLA
-
-seleccionPorAnio.addEventListener( "change" ,(e)=>{
-    const valorSelectAnio=seleccionPorAnio.value;
-    console.log("holaaa");
-    
-    const prueba = listaAnio(data2,valorSelectAnio);
-    
-    console.log(prueba);
+    }
+});
 
 
-
-
-    console.log("hoolaaa");
-})
