@@ -69,13 +69,14 @@ selectOrden.addEventListener("change", (e) => {
 
     });
 
-    });
-
 
     botonPromedio.addEventListener("click",()=>{
         const promedio1=promedio(capturarAnios(todoPeruIndicadores),elementoSelectIndicador.value);
        console.log(promedio1)
        imprimirPromedio.innerHTML=promedio1;
         });
+
+
+
 
 
