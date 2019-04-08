@@ -1,68 +1,79 @@
 /* Manejo del DOM */
-/* Seleccionando los elementos del DOM */
-const seleccionDeIndicadores = document.getElementById("selectores");
-const seleccionPorAnio = document.getElementById("anios");
+const elementoSelectIndicador = document.getElementById("selectores");
 const resultado = document.getElementById("resultado-por-año");
-//LLAMANDO A LA FUNCION QUE NOS DA LOS INDICADORCODE - INDICADORNAME
-const indicadores = capturarIndicadores(todoPeruIndicadores);
-
-
-// console.log(data2)
-// console.log(indicadores);
-// const aniosSeleccionados=capturarAnios(todoPeruIndicadores);
-// console.log(aniosSeleccionados);
+const selectOrden = document.getElementById("orden");
+const imprimirordenAsc = document.getElementById("resultado-orden-asc");
+const botonPromedio=document.getElementById("promedio-por-select");
+const imprimirPromedio=document.getElementById("resultado-promedio");
 
 // CREAMOS UNA FUNCION PARA IMPRIMIR EN EL  SELECT LOS INDICATORCODE (VALOR) Y EL INDICATORNAME(NOMBRES DE LOS TEMAS ) 
-const valorSelect = (indicador, elementoIdDom) => {
+const imprimirOpcionesIndicador = (indicadores, elementoIdDom) => {
     let string = '<option value="Todos" selected>Indicadores</option>';
-    for (let i = 0; i < indicador.length; i++) {
-        /*let indicadorId=indicador[i].id);
-        let indicadorName=indicador[i].name);*/
-        string += `<option value=${indicador[i].id}>${indicador[i].name}</option>`
+    for (let i = 0; i < indicadores.length; i++) {
+        string += `<option value=${indicadores[i].id}>${indicadores[i].name}</option>`
     }
     elementoIdDom.innerHTML = string;
 };
-// LLAMANDO LA FUNCION
-valorSelect(indicadores, seleccionDeIndicadores);
+//funcion para imprimir selector
+imprimirOpcionesIndicador(capturarIndicadores(todoPeruIndicadores), elementoSelectIndicador);
 
 
-// CREAMOS UNA FUNCION PARA IMPRIMIR EN EL  SELECT LOS AÑOS DE CADA INDICE 
-/*seleccionDeIndicadores.addEventListener( "change" ,(e)=>{
-    const valorSelect= seleccionDeIndicadores.value;
-    // console.log(valorSelect);
-    const arrAnio = listaAnio(data2,valorSelect);
-    // console.log(arrAnio);me da todos los años desde 2002-20017
-    let string = '<option value="Todos" selected>Años</option>';
-    for(let i=0; i < arrAnio.length; i++){
-        /*let indicadorId=indicador[i].id);
-        let indicadorName=indicador[i].name);
-        string += `<option value=${arrAnio[i]}>${arrAnio[i]}</option>`;
-    }
 
-    seleccionPorAnio.innerHTML = string;
-}); */
-
-seleccionDeIndicadores.addEventListener("change", (e) => {
-    
-    const valorSelect = seleccionDeIndicadores.value;
-    // console.log(valorSelect);me da el IndicatorCode
-    // console.log(valorSelect);
+elementoSelectIndicador.addEventListener("change", (e) => {  
+    const valorSelect = e.target.value;
     const resultadoAnios = capturarAnios(todoPeruIndicadores);
-    console.log(resultadoAnios);
-    let string = '<p>Años</p>';
+    // console.log(resultadoAnios);
+    let string = '<p><strong>AÑOS Y VALORES</strong></p>';
     for (let i = 0; i < resultadoAnios.length; i++) {
         if (resultadoAnios[i].indicatorCode === valorSelect) {
+           
             let llaves = Object.keys(resultadoAnios[i].data)
-        
-        /* llaves.forEach(llave => {
-                console.log(llave);
-            }); */
             for (let j=0; j < llaves.length; j++) {
-                // console.log(llaves[j]);
-                // console.log(resultadoAnios[i].data[llaves[j]]);
-                string += `<p>${llaves[j]}${resultadoAnios[i].data[llaves[j]]}</p>`;
+                if(resultadoAnios[i].data[llaves[j]] !=""){ 
+                string += `<p>${llaves[j]}:${resultadoAnios[i].data[llaves[j]]}</p>`;
+                //console.log(Object.entries(resultadoAnios[i].data))
             }
+        }
+        
             resultado.innerHTML = string;    
         }  
         }
 });
+
+
+selectOrden.addEventListener("change", (e) => {
+   
+    const valorSelect = e.target.value;
+    let string = '<p><strong>AÑOS Y VALORES ORDENADOS EN FORMA ASCENDENTE</strong></p>';
+    if(valorSelect ==="asc"){
+        newData = ordenadoAscDesc(capturarAnios(todoPeruIndicadores));
+        //  console.log(newData);
+        for(let i=0; i<newData.length; i++){
+            if(newData[i].val !=""){ 
+        // console.log(newData[i]);
+            string +=`<p>${newData[i].anio}:${newData[i].val}</p>`;
+           imprimirordenAsc.innerHTML =  string;
+        }
+}
+    }
+    else(valorSelect ==="desc")  
+    newData.sort( (prev, next) => {
+        return next.val - prev.val});
+        for(let i=0; i<newData.length; i++){
+            if(newData[i].val !=""){ 
+                // console.log(newData[i]);
+                    string +=`<p>${newData[i].anio}:${newData[i].val}</p>`;
+                   imprimirordenAsc.innerHTML =  string;
+                }
+        }
+
+    });
+
+
+    botonPromedio.addEventListener("click",()=>{
+        const promedio1=promedio(capturarAnios(todoPeruIndicadores),elementoSelectIndicador.value);
+       console.log(promedio1)
+       imprimirPromedio.innerHTML=promedio1;
+        });
+
+
