@@ -4,6 +4,7 @@ const todoPeruIndicadores = WORLDBANK['PER']['indicators'];
 // Lo vamos a utilizar para el select de nuestro usuario
 const capturarIndicadores = (data) => {
   const arr = [];
+  // console.log(arr);
   for (let i = 0; i < data.length; i++) {
     //Solo queremos trabajar con esos temas por que nuestro usuario lo pide así
     if (i > 9 && i < 16) {
@@ -23,7 +24,6 @@ window.capturarIndicadores = capturarIndicadores;
 // 2DA funcion que me da los años y su indicador code
 const capturarAnios = (dataValoresAnios) => {
 
-  // console.log(dataValoresAnios);
   const arrayAnios = [];
   for (let i = 0; i < dataValoresAnios.length; i++) {
 
@@ -48,13 +48,16 @@ window.capturarAnios = capturarAnios;
 
 
 
-const listaAniosValores = (data, order) => {
+const ordenadoAscDesc = (data, order) => {
+// ]if(order=="asc"){
+ arrAniosOrden2 = [];
+//  console.log(arrAniosOrden2)
   for (let i = 0; i < data.length; i++) {
     let dataObj = data[i].data;
     let keyArr = Object.keys(dataObj);
     let valArr = Object.values(dataObj);
-    arrAniosOrden1 = []
-    console.log(arrAniosOrden1);
+    arrAniosOrden1 = [];
+    arrAniosOrden1 = arrAniosOrden2
     for (let x = 0; x < keyArr.length; x++) {
       arrAniosOrden1.push({
         anio: keyArr[x],
@@ -64,25 +67,38 @@ const listaAniosValores = (data, order) => {
 
     }
     arrAniosOrden1.push({ indicatorCode: data[i].indicatorCode });
-    arrData = arrAniosOrden1.sort( (a, b) => {
-      if (a.val > b.val) {
-        return 1;
-      }
-      if (a.val < b.val) {
-        return -1;
-      }
-      return 0;
-    });
+    if(arrData = arrAniosOrden1.sort( (prev, next) => {
+      return prev.val - next.val
+    }));
+   
     
   };
   
   return arrAniosOrden1;
+
   
 }
 
-window.listaAniosValores = listaAniosValores;
-
-const ordenadoAscDesc = (data,ordenAscDesc) =>{
+window.ordenadoAscDesc = ordenadoAscDesc;
 
 
-}
+const promedio = (arrValores) => {
+  
+   let promedio=0;
+  //  console.log(sumTotal);
+    for (let i = 0; i < arrValores.length; i++) {
+let anios = arrValores[i].data;
+let valores= Object.values(anios);
+// console.log(valores.length)
+let sum = valores.reduce((previous, current) => current += previous);
+// console.log(sum);
+let promedio = sum / valores.length;
+// avg = 28
+// console.log(promedio);
+
+    }
+    return promedio
+  };
+ 
+  
+window.promedio=promedio;

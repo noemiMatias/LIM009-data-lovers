@@ -15,21 +15,23 @@ const imprimirOpcionesIndicador = (indicadores, elementoIdDom) => {
 //funcion para imprimir selector
 imprimirOpcionesIndicador(capturarIndicadores(todoPeruIndicadores), elementoSelectIndicador);
 
-let data2=[]
+
 
 elementoSelectIndicador.addEventListener("change", (e) => {  
     const valorSelect = e.target.value;
     const resultadoAnios = capturarAnios(todoPeruIndicadores);
     // console.log(resultadoAnios);
-    let string = '<p>Años</p>';
+    let string = '<p><strong>AÑOS Y VALORES</strong></p>';
     for (let i = 0; i < resultadoAnios.length; i++) {
         if (resultadoAnios[i].indicatorCode === valorSelect) {
-            data2=resultadoAnios[i];
+           
             let llaves = Object.keys(resultadoAnios[i].data)
             for (let j=0; j < llaves.length; j++) {
-                string += `<p>${llaves[j]}${resultadoAnios[i].data[llaves[j]]}</p>`;
+                if(resultadoAnios[i].data[llaves[j]] !=""){ 
+                string += `<p>${llaves[j]}:${resultadoAnios[i].data[llaves[j]]}</p>`;
                 //console.log(Object.entries(resultadoAnios[i].data))
             }
+        }
         
             resultado.innerHTML = string;    
         }  
@@ -40,16 +42,33 @@ elementoSelectIndicador.addEventListener("change", (e) => {
 selectOrden.addEventListener("change", (e) => {
    
     const valorSelect = e.target.value;
-    let string = '<p>Años</p>';
-    if(valorSelect == "asc"){
-        newData = listaAniosValores(capturarAnios(todoPeruIndicadores));
+    let string = '<p><strong>AÑOS Y VALORES ORDENADOS EN FORMA ASCENDENTE</strong></p>';
+    if(valorSelect ==="asc"){
+        newData = ordenadoAscDesc(capturarAnios(todoPeruIndicadores));
+        //  console.log(newData);
         for(let i=0; i<newData.length; i++){
-           if(newData[i].indicatorCode === elementoSelectIndicador.value){
-            string +=`<p>${newData[i].anio}</p>`;
-           }
+            if(newData[i].val !=""){ 
+        // console.log(newData[i]);
+            string +=`<p>${newData[i].anio}:${newData[i].val}</p>`;
            imprimirordenAsc.innerHTML =  string;
+        }
+}
     }
-    }
-});
+    else(valorSelect ==="desc")  
+    newData.sort( (prev, next) => {
+        return next.val - prev.val});
+        for(let i=0; i<newData.length; i++){
+            if(newData[i].val !=""){ 
+                // console.log(newData[i]);
+                    string +=`<p>${newData[i].anio}:${newData[i].val}</p>`;
+                   imprimirordenAsc.innerHTML =  string;
+                }
+        }
+
+    });
+
+
+
+    const promedio1= promedio(capturarAnios(todoPeruIndicadores));
 
 
