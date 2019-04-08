@@ -69,6 +69,8 @@ selectOrden.addEventListener("change", (e) => {
 
     });
 
+    });
+
 
     botonPromedio.addEventListener("click",()=>{
         const promedio1=promedio(capturarAnios(todoPeruIndicadores),elementoSelectIndicador.value);
