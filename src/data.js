@@ -19,7 +19,7 @@ const capturarIndicadores = (data) => {
 };
 
 window.capturarIndicadores = capturarIndicadores;
-
+window.todoPeruIndicadores = todoPeruIndicadores;
 
 // 2DA funcion que me da los años y su indicador code
 const capturarAnios = (dataValoresAnios) => {
@@ -28,7 +28,7 @@ const capturarAnios = (dataValoresAnios) => {
   for (let i = 0; i < dataValoresAnios.length; i++) {
 
     if (i > 9 && i < 16) {
-      const aniosTotal = dataValoresAnios[i].data;
+      
 
       const objAnios = {
         data: dataValoresAnios[i].data,
@@ -44,20 +44,13 @@ const capturarAnios = (dataValoresAnios) => {
 
 window.capturarAnios = capturarAnios;
 
-
-
-
-
-const ordenadoAscDesc = (data, order) => {
-  // ]if(order=="asc"){
-  arrAniosOrden2 = [];
-  //  console.log(arrAniosOrden2)
+const dataParaOrdenado = (data) => {
+   
   for (let i = 0; i < data.length; i++) {
     let dataObj = data[i].data;
     let keyArr = Object.keys(dataObj);
     let valArr = Object.values(dataObj);
-    arrAniosOrden1 = [];
-    arrAniosOrden1 = arrAniosOrden2
+    let arrAniosOrden1 = [];
     for (let x = 0; x < keyArr.length; x++) {
       arrAniosOrden1.push({
         anio: keyArr[x],
@@ -67,19 +60,46 @@ const ordenadoAscDesc = (data, order) => {
 
     }
     arrAniosOrden1.push({ indicatorCode: data[i].indicatorCode });
-    if (arrData = arrAniosOrden1.sort((prev, next) => {
-      return prev.val - next.val
-    }));
-
-
-  };
-
-  return arrAniosOrden1;
-
-
+    return arrAniosOrden1;
+    //console.log(arrAniosOrden1);
+    
+  }
 }
 
-window.ordenadoAscDesc = ordenadoAscDesc;
+const filterData = (data, condicion) => { // data = capturarAnios(todoPeruIndicadores), condicion = 'SL.TLF.ADVN.FE.ZS'
+let resultado = [];
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].indicatorCode === condicion) {
+            let llaves = Object.keys(data[i].data)
+            for (let j=0; j < llaves.length; j++) {
+                if(data[i].data[llaves[j]] !==""){ 
+                resultado.push({anio: llaves[j], val: data[i].data[llaves[j]]});
+                }
+            }
+        }  
+    }
+    return resultado;
+}
+
+//CREO Q FALTARIA AGREGARLE EL INDICADORCODE PARA IGUALARLO CON EL SELECT ¡VA EL ID DEL SELECT ?
+const ordenadoAscDesc = (data, order) => { // data = filterData(capturarAnios(todoPeruIndicadores), condicion)
+  const newdata = [...data];
+  let arrData=[];
+  if (order === "asc") {
+  arrData = newdata.sort( (prev, next) => {
+      return prev.val - next.val;
+
+  });
+  } else{
+    
+    arrData=newdata.sort((prev , next)=>{
+      return next.val - prev.val;
+    });
+  }
+  return arrData;
+
+    }
+  
 
 
 const promedio = (arrValores, promselect) => {
@@ -88,32 +108,32 @@ const promedio = (arrValores, promselect) => {
     if (arrValores[i].indicatorCode === promselect) {
 
       //  console.log(sumTotal);
-      let sum =0;
+      let sum = 0;
       let totalValores = 0;
       //for (let j = 0; j < arrValores[i].length; j++) {
       let anios = arrValores[i].data;
       let valores = Object.values(anios);
-      
+
       // console.log(valores.length)
       for (let j = 0; j < valores.length; j++) {
-        
+
         const element = valores[j];
-        if (element !=""){
-          sum+=element
-          totalValores= totalValores +1
+        if (element != "") {
+          sum += element
+          totalValores = totalValores + 1
         }
-      
+
       }
 
-      promedio = sum/totalValores;
+      promedio = sum / totalValores;
     }
 
 
   }
 
 
-  return promedio
+  return promedio;
 };
-
+window.ordenadoAscDesc = ordenadoAscDesc;
 
 window.promedio = promedio;
