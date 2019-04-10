@@ -1,3 +1,5 @@
+const todoPeruIndicadores = WORLDBANK['PER']['indicators'];
+
 const elementoSelectIndicador = document.getElementById("selectores");
 const resultado = document.getElementById("resultado-por-año");
 const selectOrden = document.getElementById("orden");
@@ -13,12 +15,12 @@ const imprimirOpcionesIndicador = (indicadores, elementoIdDom) => {
     }
     elementoIdDom.innerHTML = string;
 };
-//funcion para imprimir selector
-imprimirOpcionesIndicador(capturarIndicadores(todoPeruIndicadores), elementoSelectIndicador);
+// funcion para imprimir selector
+imprimirOpcionesIndicador(worldbank.capturarIndicadores(todoPeruIndicadores), elementoSelectIndicador);
 elementoSelectIndicador.addEventListener("change", (e) => {
     const valorSelect = e.target.value;
-    const resultadoAnios = capturarAnios(todoPeruIndicadores);
-    arrayFiltrado = filterData(capturarAnios(todoPeruIndicadores), valorSelect);
+    const resultadoAnios = worldbank.capturarAnios(todoPeruIndicadores);
+    arrayFiltrado = worldbank.filterData(worldbank.capturarAnios(todoPeruIndicadores), valorSelect);
     // console.log(resultadoAnios);
     let string = '<p><strong>AÑOS Y VALORES</strong></p>';
     for (let i = 0; i < resultadoAnios.length; i++) {
@@ -39,12 +41,10 @@ elementoSelectIndicador.addEventListener("change", (e) => {
 
 selectOrden.addEventListener("change", (e) => {
     const valorSelect = e.target.value;
-    const newData = ordenadoAscDesc(arrayFiltrado, valorSelect);
+    const newData = worldbank.ordenadoAscDesc(arrayFiltrado, valorSelect);
     //console.log(newData)
     let string = "'<p><strong>ordenando valores</strong></p>'";
     for (let i = 0; i < newData.length; i++) {
-        let anios = newData[i].anio
-        let valores = newData[i].val
         string += `<p>${newData[i].anio}:${newData[i].val}</p>`
 
     }
@@ -53,7 +53,7 @@ selectOrden.addEventListener("change", (e) => {
 
 
 botonPromedio.addEventListener("click", () => {
-    const promedio1 = promedio(capturarAnios(todoPeruIndicadores), elementoSelectIndicador.value);
+    const promedio1 = worldbank.promedio(worldbank.capturarAnios(todoPeruIndicadores), elementoSelectIndicador.value);
 
     imprimirPromedio.innerHTML = promedio1;
 });

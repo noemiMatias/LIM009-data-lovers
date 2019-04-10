@@ -1,4 +1,3 @@
-const todoPeruIndicadores = WORLDBANK['PER']['indicators'];
 
 // 1RA FUNCION QUE CAPTURA LOS INDICADORES POR CODIGO Y NAME QUE QUIERO (FUERZA LABORAL 6 INDICADORES)
 // Lo vamos a utilizar para el select de nuestro usuario
@@ -17,9 +16,6 @@ const capturarIndicadores = (data) => {
   }
   return arr;
 };
-
-window.capturarIndicadores = capturarIndicadores;
-window.todoPeruIndicadores = todoPeruIndicadores;
 
 // 2DA funcion que me da los años y su indicador code
 const capturarAnios = (dataValoresAnios) => {
@@ -41,30 +37,6 @@ const capturarAnios = (dataValoresAnios) => {
   return arrayAnios
 
 };
-
-window.capturarAnios = capturarAnios;
-
-const dataParaOrdenado = (data) => {
-   
-  for (let i = 0; i < data.length; i++) {
-    let dataObj = data[i].data;
-    let keyArr = Object.keys(dataObj);
-    let valArr = Object.values(dataObj);
-    let arrAniosOrden1 = [];
-    for (let x = 0; x < keyArr.length; x++) {
-      arrAniosOrden1.push({
-        anio: keyArr[x],
-        val: valArr[x]
-
-      });
-
-    }
-    arrAniosOrden1.push({ indicatorCode: data[i].indicatorCode });
-    return arrAniosOrden1;
-    //console.log(arrAniosOrden1);
-    
-  }
-}
 
 const filterData = (data, condicion) => { // data = capturarAnios(todoPeruIndicadores), condicion = 'SL.TLF.ADVN.FE.ZS'
 let resultado = [];
@@ -100,8 +72,6 @@ const ordenadoAscDesc = (data, order) => { // data = filterData(capturarAnios(to
 
     }
   
-
-
 const promedio = (arrValores, promselect) => {
   let promedio = 0;
   for (let i = 0; i < arrValores.length; i++) {
@@ -134,6 +104,12 @@ const promedio = (arrValores, promselect) => {
 
   return promedio;
 };
-window.ordenadoAscDesc = ordenadoAscDesc;
 
-window.promedio = promedio;
+
+window.worldbank = {
+  capturarAnios,
+  capturarIndicadores,
+  filterData,
+  ordenadoAscDesc,
+  promedio
+}
