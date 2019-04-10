@@ -8,6 +8,8 @@
   
   "extends": "eslint:recommended",
   "globals": {
-    "example": false
+    "example": false,
+    "todoPeruIndicadores": false,
+    "capturarIndicadores": false
   }
 }
