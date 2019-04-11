@@ -20,15 +20,25 @@ elementoSelectIndicador.addEventListener("change", (e) => {
     const resultadoAnios = capturarAnios(todoPeruIndicadores);
     arrayFiltrado = filterData(capturarAnios(todoPeruIndicadores), valorSelect);
     // console.log(resultadoAnios);
-    let string = '<p><strong>AÑOS Y VALORES</strong></p>';
+    let string =  '<table><th scope="col">AÑOS Y VALORES PORCENTUALES</th></table>';
     for (let i = 0; i < resultadoAnios.length; i++) {
         if (resultadoAnios[i].indicatorCode === valorSelect) {
 
             let llaves = Object.keys(resultadoAnios[i].data)
             for (let j = 0; j < llaves.length; j++) {
                 if (resultadoAnios[i].data[llaves[j]] != "") {
-                    string += `<p>${llaves[j]}:${resultadoAnios[i].data[llaves[j]]}</p>`;
-                    //console.log(Object.entries(resultadoAnios[i].data))
+                    string += `<table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Año</th>
+                        <th scope="col">%</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <th scope="row">${llaves[j]}</th>
+                        <td>${resultadoAnios[i].data[llaves[j]]}</td>
+                    </tbody>
+                  </table>`
                 }
             }
 
@@ -41,19 +51,43 @@ selectOrden.addEventListener("change", (e) => {
     const valorSelect = e.target.value;
     const newData = ordenadoAscDesc(arrayFiltrado, valorSelect);
     //console.log(newData)
-    let string = "'<p><strong>ordenando valores</strong></p>'";
+    let string = '<table><th scope="col">VALORES PORCENTUALES EN ORDEN ASCENDENTE Y DESCENDENTE</th></table>';
     for (let i = 0; i < newData.length; i++) {
-        let anios = newData[i].anio
-        let valores = newData[i].val
-        string += `<p>${newData[i].anio}:${newData[i].val}</p>`
+        string +=`<table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">Año</th>
+                        <th scope="col">%</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <th scope="row">${newData[i].anio}</th>
+                        <td>${newData[i].val}}</td>
+                    </tbody>
+                  </table>`
 
     }
     imprimirordenAsc.innerHTML = string
 });
 
 
+
+
+
+
 botonPromedio.addEventListener("click", () => {
     const promedio1 = promedio(capturarAnios(todoPeruIndicadores), elementoSelectIndicador.value);
+    let string='<table><th scope="col">PROMEDIO PORCENTUAL</th></table>';;
+    string+=`<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">%</th>
+      </tr>
+    </thead>
+    <tbody>
+    <th scope="row">${promedio1}</td>
+    </tbody>
+  </table>`
 
-    imprimirPromedio.innerHTML = promedio1;
+    imprimirPromedio.innerHTML = string;
 });
