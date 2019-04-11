@@ -46,8 +46,31 @@
       </nav>
     </div>
   </header>
-
-
+  <form action=" "></form>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-8 col-sm-4 col-md-4 col-lg-8">
+        <p>Seleccione un Inidicador para conocer su valor porcentual por Años</p>
+        <p>Seleccione Orden Ascendente o Descendente para visualizar el orden del Indicador ya seleccionado</p>
+        <p>Para conocer el promedio porcentual seleccionado pulse "Ver Promedio"</p>
+        <select class ="col-xs-4 col-lg-4" id="selectores">
+        </select>
+        <select id="orden">
+          <option value="asc">Orden Ascendente</option>
+          <option value="des">Orden Descendente</option>
+        </select>
+        <button type="button" id="promedio-por-select">Ver promedio</button>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12  col-lg-12">
+            <div id="resultado-por-año"></div>
+            <div id="resultado-orden-asc"></div>
+            <div id="resultado-promedio"></div>
+            <br>
+          </div>
+        </div>
+        </form>
   <div class="container">
     <section class="row">
       <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -70,31 +93,7 @@
         </p>
         <img src="img./imagen1.jpg" class="img-fluid" alt="Responsive image">
       </article>
-      <form action=" "></form>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-12">
-            <p>Seleccione un Inidicador para conocer su valor porcentual por Años</p>
-            <p>Seleccione ascendente o descendente para visualizar el orden del Indicador ya seleccionado</p>
-            <p>Para conocer el promedio porcentual del indicador seleccionado pulse "Ver Promedio"</p>
-            <select id="selectores">
-            </select>
-            <select id="orden">
-              <option value="asc">Orden Ascendente</option>
-              <option value="des">Orden Descendente</option>
-            </select>
-            <button type="button" id="promedio-por-select">Ver promedio</button>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-4  col-lg-12">
-                <div id="resultado-por-año"></div>
-                <div id="resultado-orden-asc"></div>
-                <div id="resultado-promedio"></div>
-                <br>
-              </div>
-            </div>
-            </form>
+      
           </div>
         </div>
 
