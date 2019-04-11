@@ -1,4 +1,4 @@
-# Data Lovers
+# InData
 
 ## Índice
 
@@ -16,24 +16,11 @@
 ***
 
 ## Preámbulo
+Más de 7 millones de mujeres conforman la fuerza laboral del Perú
 
-Según un [estudio de IBM](https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?htmlfid=WRL12345USEN),
-el 90% de la data que existe hoy ha sido creada durante los últimos dos años.
-Cada día generamos 2.5 trillones de bytes de datos, una cifra sin precedentes.
+El Instituto Nacional de Estadística e Informática (INEI) informa que 7 millones 209 mil mujeres integran la Población Económicamente Activa (PEA), es decir, que de cada 100 personas de 14 y más años de edad que integran la PEA, 44 son mujeres.   Cabe precisar, que la población femenina del país es de 15 millones 716 mil y representa el 50% de la población total; y el 74,8% se encuentran en edad de trabajar (11 millones 752 mil).   Se incrementan mujeres que trabajan Según resultados de la Encuesta Nacional de Hogares, las mujeres que trabajan se han incrementado en 23,2% en los últimos diez años; así, en la actualidad trabajan 6 millones 947 mil mujeres, mientras que en el año 2005 eran 5 millones 637 mil. La mayor incorporación de las mujeres en la actividad económica se relaciona con la disminución de las tasas de fecundidad y el acceso a la educación, aumentando su disponibilidad de tiempo para acceder a una actividad remunerada. 
 
-No obstante, los datos por sí mismos son de poca utilidad. Para que esas
-grandes cantidades de datos se conviertan en **información** fácil de leer para
-los usuarios, necesitamos entender y procesar estos datos. Una manera simple de
-hacerlo es creando _interfaces_ y _visualizaciones_.
-
-En la siguiente imagen, podrás ver cómo con la data que que se ve en la parte
-izquierda se puede construir una interfaz amigable y entendible por el usuario
-al lado derecho.
-
-![json-interfaz](https://lh4.googleusercontent.com/Tn-RPXS26pVvOTdUzRT1KVaJ-_QbFs9SpcGLxSPE43fgbHaXtFgMUInuDt7kV41DkT1j8Tt29V0LxQW7SMtC6digOIhfTXSBKdwI08wUwhD3RAqlwy0hjfmhZ2BFe91mtmCSEqysfgk)
-
-\* Puedes ver el detalle de la data en este [link](https://gist.github.com/lalogf/dd4aa3017a9f8aa8f90dfbca382c4dc9#file-student-json)
-y la interfaz construida en este [link](https://app.talento.laboratoria.la/profile/HFOoMpOreBU2psCcjjLg5O2EWEv2).
+![Fuente:INEI](https://www.inei.gob.pe/prensa/noticias/mas-de-7-millones-de-mujeres-conforman-la-fuerza-laboral-del-peru-8943/imprimir/)
 
 ## Resumen del proyecto
 
