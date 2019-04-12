@@ -3,7 +3,6 @@ const dataTotal = worldbank.todoPeruIndicadores(todoPeru);
 const elementoSelectIndicador = document.getElementById('selectores');
 const resultado = document.getElementById('resultado-por-año');
 const selectOrden = document.getElementById('orden');
-const imprimirordenAsc = document.getElementById('resultado-orden-asc');
 const botonPromedio = document.getElementById('promedio-por-select');
 const imprimirPromedio = document.getElementById('resultado-promedio');
 let arrayFiltrado = [];
@@ -49,6 +48,7 @@ elementoSelectIndicador.addEventListener('change', (event) => {
 });
 
 selectOrden.addEventListener('change', (event) => {
+  resultado.innerHTML=""
   const valorSelect = event.target.value;
   const newData = worldbank.ordenadoAscDesc(arrayFiltrado, valorSelect);
   // console.log(newData)
@@ -67,7 +67,7 @@ selectOrden.addEventListener('change', (event) => {
                     </tbody>
                   </table>`;
   }
-  imprimirordenAsc.innerHTML = string;
+  resultado.innerHTML = string;
 });
 
 

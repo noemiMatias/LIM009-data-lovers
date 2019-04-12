@@ -1,3 +1,9 @@
+h1,h2{
+    text-align: center;
+    
+}
+
+
 #resultado-por-año{
     background-color: rgb(13, 228, 243);
     color: whitesmoke;
