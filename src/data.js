@@ -1,13 +1,13 @@
 
 const todoPeruIndicadores = (data) =>{
   const dataPeru = [];
-  
   for(let i = 10; i <=15 ; i++){
     let data1 =data[i]
     dataPeru.push(data1);
   }
 
-  return dataPeru
+return dataPeru
+  
 }
 
 
@@ -23,7 +23,7 @@ const capturarIndicadores = (data) => {
       arr.push(obj);
     
   }
-   return arr;
+  return arr;
 };
 
 
@@ -37,11 +37,13 @@ const capturarAnios = (dataValoresAnios) => {
       };
       arrayAnios.push(objAnios);
     }
+  // console.log(arrayAnios);
+  return arrayAnios;
 };
 
 
 const filterData = (data, condicion) => { // data = capturarAnios(todoPeruIndicadores), condicion = 'SL.TLF.ADVN.FE.ZS'
-let resultado = [];
+  let resultado = [];
   for (let i = 0; i < data.length; i++) {
     if (data[i].indicatorCode === condicion) {
       let llaves = Object.keys(data[i].data);
@@ -52,7 +54,7 @@ let resultado = [];
       }
     }  
   }
-  //  return resultado;
+   return resultado;
 };
 
 // CREO Q FALTARIA AGREGARLE EL INDICADORCODE PARA IGUALARLO CON EL SELECT ¡VA EL ID DEL SELECT ?
@@ -68,8 +70,8 @@ const ordenadoAscDesc = (data, order) => { // data = filterData(capturarAnios(to
       return next.val - prev.val;
     });
   }
-  return arrData;
-  // console.log(arrData);
+   return arrData;
+ 
 };
 
 
