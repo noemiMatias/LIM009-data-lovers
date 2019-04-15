@@ -57,14 +57,14 @@ const filterData = (data, condicion) => { // data = capturarAnios(todoPeruIndica
 
 // funcion que retorna años y valores ordenados en forma ascendente y descendente
 const ordenadoAscDesc = (data, order) => { 
-  const newdata = [...data];
+  const newData =data;
   let arrData = [];
   if (order === 'asc') {
-    arrData = newdata.sort((prev, next) => {
+    arrData = newData.sort((prev, next) => {
       return prev.val - next.val;
     });
   } else {
-    arrData = newdata.sort((prev, next) => {
+    arrData = newData.sort((prev, next) => {
       return next.val - prev.val;
     });
   }
