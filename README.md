@@ -75,4 +75,3 @@ Se realizó un prototipo de alta fielidad en figma
 ![imagen figma].(src/img/figma.png)
 
 (https://www.figma.com/file/LW5VwSdAQ1DHNqhX3aNLWbov/PROTOTIPO-DE-ALTA-FIDELIDAD?node-id=0%3A1)
-
