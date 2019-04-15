@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <title>Data Lovers</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <header>
     <div class="container-fluid">
@@ -15,7 +17,7 @@
           <img src="img./logo.png" class="img-fluid" alt="Responsive image">
         </div>
         <div class="col 10">
-          <div class="page-header" class="col-xs-10 col-sm-10 col-md-8 col-lg-10">
+          <div class="page-header col-xs-10 col-sm-10 col-md-8 col-lg-10">
             <h1>INDICADORES DE DESARROLLO DEL BANCO MUNDIAL</h1>
             <h2>"Fuerza Laboral con educación Básica y Avanzada en el Perú"</h2>
           </div>
@@ -24,8 +26,8 @@
       <hr>
       <nav class="navbar navbar-dark bg-primary">
         <a class="navbar-brand" href="#">INDICADORES</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-          aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
@@ -44,87 +46,68 @@
       </nav>
     </div>
   </header>
-  <form action=" "></form>
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-8 col-sm-4 col-md-4 col-lg-8">
-        <p>Seleccione un Inidicador para conocer su valor porcentual por Años</p>
-        <p>Seleccione Orden Ascendente o Descendente para visualizar el orden del Indicador ya seleccionado</p>
-        <p>Para conocer el promedio porcentual seleccionado pulse "Ver Promedio"</p>
-        <select class ="col-xs-4 col-lg-4" id="selectores">
-        </select>
-        <select id="orden">
-          <option value="asc">Orden Ascendente</option>
-          <option value="des">Orden Descendente</option>
-        </select>
-        <button type="button" id="promedio-por-select">Ver promedio</button>
-      </div>
-      <div class="container">
+  <form action=" ">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <ul>
+            <li>Seleccione un Indicador para conocer su valor porcentual por Años</li>
+            <li>Seleccione Orden Ascendente o Descendente para visualizar el orden del Indicador ya seleccionado</li>
+            <li>Para conocer el promedio porcentual seleccionado pulse "Ver Promedio"</li>
+          </ul>
+        </div>
         <div class="row">
-          <div class="col-xs-12  col-lg-12">
+          <select class="col-xs-4 col-lg-4" id="selectores">
+          </select>
+          <select class="col-xs-4 col-lg-4" id="orden">
+            <option value="">Ordenar:</option>
+            <option value="asc">Ascendente</option>
+            <option value="des"> Descendente</option>
+          </select>
+          <button class="col-xs-4 col-lg-4" type="button" id="promedio-por-select">Ver promedio</button>
+        </div>
+        <div class="row">
+          <div class="col-xs-12  col-lg-9">
             <div id="resultado-por-año"></div>
-            <div id="resultado-orden-asc"></div>
+          </div>
+          <div class="col-xs-12  col-lg-3">
             <div id="resultado-promedio"></div>
-            <br>
           </div>
         </div>
-        </form>
-  <div class="container">
-    <section class="row">
+      </div>
+    </div>
+  </form>
+
+  <section class=" row">
+    <div class="container">
       <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <p>
-          En la teoría marxista, la fuerza de trabajo (o capacidad de trabajo) es el conjunto de capacidades físicas y mentales, inherentes
+          En la teoría marxista, la fuerza de trabajo (o capacidad de trabajo) es el conjunto de capacidades físicas y
+          mentales, inherentes
           a todo ser humano, susceptibles de ser utilizadas para la producción de un valor de uso. Se diferencia así del
-          concepto "trabajo", que es la puesta en práctica de la fuerza de trabajo. La Fuerza Laboral corresponde a la fuerza
-          laboral efectiva de un país, al estar constituida por las Personas en Edad de Trabajar, que están laborando o buscan
-          trabajo. En otras palabras, corresponde a los individuos que participan del mercado de trabajo, ya sea que hayan
+          concepto "trabajo", que es la puesta en práctica de la fuerza de trabajo. La Fuerza Laboral corresponde a la
+          fuerza
+          laboral efectiva de un país, al estar constituida por las Personas en Edad de Trabajar, que están laborando o
+          buscan
+          trabajo. En otras palabras, corresponde a los individuos que participan del mercado de trabajo, ya sea que
+          hayan
           encontrado un empleo o no.
           <a href="fuerza de trabajo">ver fuerza de trabajo</a><br />
         </p>
         <p>
-          Con motivo del Día Internacional de la Mujer que se celebra este 8 de marzo, el Instituto Nacional de Estadística e Informática
+          Con motivo del Día Internacional de la Mujer que se celebra este 8 de marzo, el Instituto Nacional de
+          Estadística e Informática
           (INEI) informa que 7 millones 209 mil mujeres integran la Población Económicamente Activa (PEA), es decir, que
-          de cada 100 personas de 14 y más años de edad que integran la PEA, 44 son mujeres. Cabe precisar, que la población
-          femenina del país es de 15 millones 716 mil y representa el 50% de la población total; y el 74,8% se encuentran
+          de cada 100 personas de 14 y más años de edad que integran la PEA, 44 son mujeres. Cabe precisar, que la
+          población
+          femenina del país es de 15 millones 716 mil y representa el 50% de la población total; y el 74,8% se
+          encuentran
           en edad de trabajar (11 millones 752 mil).
           <a href="www.inei.gob.pe">www.inei.gob.pe</a><br />
         </p>
         <img src="img./imagen1.jpg" class="img-fluid" alt="Responsive image">
-      </article>      
-          </div>
-        </div>
-      <form action=" "></form>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-4 col-md-4 col-lg-12">
-            <p>Seleccione un Inidicador para conocer su valor porcentual por Años</p>
-            <p>Seleccione ascendente o descendente para visualizar el orden del Indicador ya seleccionado</p>
-            <p>Para conocer el promedio porcentual del indicador seleccionado pulse "Ver Promedio"</p>
-            <select id="selectores">
-            </select>
-            <select id="orden">
-              <option value="asc">Orden Ascendente</option>
-              <option value="des">Orden Descendente</option>
-            </select>
-            <button type="button" id="promedio-por-select">Ver promedio</button>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-4  col-lg-12">
-                <div id="resultado-por-año"></div>
-                <div id="resultado-orden-asc"></div>
-                <div id="resultado-promedio"></div>
-                <br>
-              </div>
-            </div>
-            </form>
-          </div>
-        </div>
-      </div>
-  </div>
-  </div>
-  </div>
-  </article>
+      </article>
+    </div>
   </section>
   <hr>
   <footer id="footer">
@@ -135,19 +118,24 @@
             <p class="mb-0">InData</p>
             <footer class="blockquote-footer">Información a un Click</footer>
           </blockquote>
+        </div>
+      </div>
+    </div>
   </footer>
-  </section>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-  crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-  crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-  crossorigin="anonymous"></script>
-<script src="./data/worldbank/worldbank.js"></script>
-<script src="data.js"></script>
-<script src="main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="./data/worldbank/worldbank.js"></script>
+  <script src="data.js"></script>
+  <script src="main.js"></script>
+
 </body>
 <footer></footer>
-</body>
-<footer></footer>
+
 </html>

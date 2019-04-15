@@ -1,17 +1,23 @@
+h1,h2{
+    text-align: center;
+    
+}
+
+
 #resultado-por-año{
-    background-color: rgb(13, 228, 243);
+    background-color: rgb(101, 177, 240);
     color: whitesmoke;
 }
 #resultado-orden-asc{
-    background-color: rgba(19, 203, 228, 0.74);
+    background-color: rgba(30, 19, 128, 0.74);
     color:whitesmoke;
 }
 
 #resultado-promedio{
-    background-color: rgba(55, 41, 255, 0.973);
+    background-color: rgb(101, 177, 240);
     color:whitesmoke;
 }
 #footer{
-    background-color: rgba(55, 41, 255, 0.973);
+    background-color: rgba(42, 13, 231, 0.973);
     color:whitesmoke;
 }

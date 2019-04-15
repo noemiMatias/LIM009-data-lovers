@@ -1,77 +1,87 @@
+// Funcion que retorna un array con 6 objetos:fuerza laboral
+const todoPeruIndicadores = (data) =>{
+  const dataPeru = [];
+  for(let i = 10; i <=15 ; i++){
+    let data1 =data[i]
+    dataPeru.push(data1);
+  }
 
-// 1RA FUNCION QUE CAPTURA LOS INDICADORES POR CODIGO Y NAME QUE QUIERO (FUERZA LABORAL 6 INDICADORES)
+return dataPeru
+  
+}
+
+
+// funcion que retorna los  6 indicadores con propiedades id:años, name: indicatorName
 // Lo vamos a utilizar para el select de nuestro usuario
 const capturarIndicadores = (data) => {
   const arr = [];
-  for (let i = 0; i < data.length; i++) {
-    if (i > 9 && i < 16) {
+  for (let i = 0; i <data.length ; i++) {
       let obj = {
         id: data[i].indicatorCode,
         name: data[i].indicatorName
       };
       arr.push(obj);
-    }
   }
   return arr;
 };
-// 2DA funcion que me da los años y su indicador code
+
+
+// funcion que retorna un array con  años y su indicador code
 const capturarAnios = (dataValoresAnios) => {
   const arrayAnios = [];
   for (let i = 0; i < dataValoresAnios.length; i++) {
-    if (i > 9 && i < 16) {
       const objAnios = {
         data: dataValoresAnios[i].data,
         indicatorCode: dataValoresAnios[i].indicatorCode
       };
       arrayAnios.push(objAnios);
     }
-  }
-  // console.log(arrayAnios);
   return arrayAnios;
 };
+
+// funcion que retorna un array los años y valores de cada indicador que son seleccionados en el delect
 const filterData = (data, condicion) => { // data = capturarAnios(todoPeruIndicadores), condicion = 'SL.TLF.ADVN.FE.ZS'
   let resultado = [];
   for (let i = 0; i < data.length; i++) {
     if (data[i].indicatorCode === condicion) {
       let llaves = Object.keys(data[i].data);
       for (let j = 0; j < llaves.length; j++) {
-        if (data[i].data[llaves[j]] !== '') {
-          resultado.push({ anio: llaves[j], val: data[i].data[llaves[j]] });
+        if (data[i].data[llaves[j]] !== '') { 
+          resultado.push({anio: llaves[j], val: data[i].data[llaves[j]]});
         }
       }
-    }
+    }  
   }
-  return resultado;
+   return resultado;
 };
 
-// CREO Q FALTARIA AGREGARLE EL INDICADORCODE PARA IGUALARLO CON EL SELECT ¡VA EL ID DEL SELECT ?
-const ordenadoAscDesc = (data, order) => { // data = filterData(capturarAnios(todoPeruIndicadores), condicion)
-  const newdata = [...data];
+// funcion que retorna años y valores ordenados en forma ascendente y descendente
+const ordenadoAscDesc = (data, order) => { 
+  const newData =data;
   let arrData = [];
   if (order === 'asc') {
-    arrData = newdata.sort((prev, next) => {
+    arrData = newData.sort((prev, next) => {
       return prev.val - next.val;
     });
   } else {
-    arrData = newdata.sort((prev, next) => {
+    arrData = newData.sort((prev, next) => {
       return next.val - prev.val;
     });
   }
-  return arrData;
+   return arrData;
+ 
 };
 
+
+// funcion que retorna un numéro : promedio de cada indicador
 const promedio = (arrValores, promselect) => {
   let promedio = 0;
   for (let i = 0; i < arrValores.length; i++) {
     if (arrValores[i].indicatorCode === promselect) {
-      //  console.log(sumTotal);
       let sum = 0;
       let totalValores = 0;
-      // for (let j = 0; j < arrValores[i].length; j++) {
       let anios = arrValores[i].data;
       let valores = Object.values(anios);
-
-      // console.log(valores.length)
       for (let j = 0; j < valores.length; j++) {
         const element = valores[j];
         if (element !== '') {
@@ -84,12 +94,16 @@ const promedio = (arrValores, promselect) => {
     }
   }
 
+
   return promedio;
 };
+
 window.worldbank = {
-  capturarAnios,
-  capturarIndicadores,
-  filterData,
-  ordenadoAscDesc,
-  promedio
+  capturarIndicadores: capturarIndicadores,
+  capturarAnios: capturarAnios,
+  filterData: filterData,
+  ordenadoAscDesc: ordenadoAscDesc,
+  promedio: promedio,
+  todoPeruIndicadores: todoPeruIndicadores
+
 };
